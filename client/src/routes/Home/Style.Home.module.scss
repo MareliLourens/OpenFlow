@@ -1,80 +1,50 @@
 @import "../../mainStyling.scss";
 
-.main{
-    display: flex;
-    justify-content: center;
-    padding-top: 1vh;
-    background-color: #000000;
-    height: 99vh;
-    user-select: none;
-    .leftCol{
-        display: flex;
-        flex: 1;
-        max-width: 50%;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        .blinker{
-            max-width: 100px;
-            display: flex;
-            margin-top: 15vh;
-            margin-left: -1.4vw;
-        }
+.main {
+  display: flex;
+  justify-content: center;
+
+  background-color: #070707;
+  height: 100vh;
+  user-select: none;
+  .content {
+    height: 95%;
+    width: 90%;
+    color: #ffffff;
+    font-family: "Poppins";
+    .heading {
+      margin-top: 5vh;
     }
-    .rightCol{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex: 1;
-        max-width: 50%;
-        background-color: #050505;
-        color: white;
-        .content{
-            width: 26vw;
-            font-size: 22px;
-            height: 24vh;
-            display: flex;
-            flex-direction: column;
-            font-family: 'lato';
-            .buttonSection{
-                width: 100%;
-                display: flex;
-                height: 10vh;
-                margin-top: auto;
-                .button{
-                    background-color: #56284B;
-                    height: 7vh;
-                    width: 45%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    transition: all 500ms;
-                    cursor: pointer;
-                    &:hover{
-                        background-color: #81496f;
-                        scale: 1.1;
-                    }
-                    &:active{
-                        transition: 10ms;
-                        background-color: #2d2d2d;
-                        scale: 1;
-                        color: gray;
-                    }
-                }
-                .button2{
-                    background-color: #244F5D;
-                    margin-left: auto;
-                    &:hover{
-                        background-color: #3d7e90;
-                    }
-                    &:active{
-                        transition: 10ms;
-                        background-color: #2d2d2d;
-                        color: gray;
-                        scale: 1;
-                    }
-                }
-            }
-        }
+    .text {
+      color: #676767;
+      font-weight: bold;
+      font-size: 18px;
+      max-width: 26vw;
     }
+    .searchBar {
+      width: 100%;
+      height: 8vh;
+      margin-top: 5vh;
+      display: flex;
+      justify-content: center;
+
+      .searchInput {
+        background-color: #111218;
+        outline: none;
+        border: none;
+        width: 100%;
+        border-radius: 12px;
+        color: #676767;
+        padding-left: 2vw;
+        font-weight: bold;
+        font-size: 18px;
+      }
+    }
+    .topQuestions{
+        margin-top: 5vh;
+        background-color: magenta;
+        display: flex;
+        flex-direction: column;
+    }
+  }
 }
