@@ -3,6 +3,7 @@ import style from "./Style.Home.module.scss";
 import HomeHeaderComponent from "../../components/HomeHeader-Component/Component.HomeHeader";
 import blinker from "../../assets/images/blink.gif";
 import NavBarComponent from "../../components/NavBar-Component/Component.NavBar";
+import SmallQuestionComponent from "../../components/SmallQuestion-Component/Component.SmallQuestion";
 
 const HomeRoute = () => {
   return (
@@ -22,7 +23,13 @@ const HomeRoute = () => {
         </div>
         <div className={style.topQuestions}>
           <h1>Top Questions</h1>
-          <div className={style.questionCarousel}></div>
+          <div className={style.questionCarousel}>
+            <SmallQuestionComponent />
+            <SmallQuestionComponent />
+            <SmallQuestionComponent />
+            <SmallQuestionComponent />
+
+          </div>
         </div>
       </div>
     </div>

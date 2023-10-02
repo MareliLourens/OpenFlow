@@ -42,9 +42,17 @@
     }
     .topQuestions{
         margin-top: 5vh;
-        background-color: magenta;
+        // background-color: magenta;
         display: flex;
         flex-direction: column;
+        .questionCarousel{
+          width: 100%;
+          height: 25vh;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 2vw;
+        }
     }
   }
 }
