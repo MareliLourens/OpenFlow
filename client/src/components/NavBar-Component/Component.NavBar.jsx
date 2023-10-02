@@ -11,22 +11,22 @@ const NavBarComponent = () => {
     <div className={style.main}>
       <img className={style.logoImg} src={logo} />
       <div className={style.links}>
-        <div className={style.link}>Home</div>
-        <div className={style.link}>Questions</div>
-        <div className={style.link}>Answers</div>
-        <div className={style.link}>Support</div>
-        <Link to="/profile">
-          <div className={style.link}>
-            {user === true ? (
-              "Profile"
-            ) : (
-              <>
-                <img className={style.loginIcon} src={loginIcon} />
-                Login
-              </>
-            )}
-          </div>
-        </Link>
+        <Link to="/"><div className={style.link}>Home</div></Link>
+        <Link to="/questions"><div className={style.link}>Questions</div></Link>
+        <Link to="/answers"><div className={style.link}>Answers</div></Link>
+        <Link to="/support"><div className={style.link}>Support</div></Link>
+        {user === true ? (
+          <Link to="/profile">
+            <div className={style.link}>Profile</div>
+          </Link>
+        ) : (
+          <Link to="/login">
+            <div className={style.link}>
+              <img className={style.loginIcon} src={loginIcon} />
+              Login
+            </div>
+          </Link>
+        )}
       </div>
     </div>
   );

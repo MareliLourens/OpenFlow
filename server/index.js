@@ -2,6 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const userRoute = require('./routes/users')
+const questionRoute = require('./routes/questions')
+const answerRoute = require('./routes/answers')
 
 require('dotenv/config')
 
@@ -15,6 +17,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 app.use(userRoute)
+app.use(questionRoute)
+app.use(answerRoute)
 
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
