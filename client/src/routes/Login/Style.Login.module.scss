@@ -34,10 +34,7 @@
         border-radius: 18px 0px 0px 0px;
         cursor: pointer;
       }
-      .signOpt2 {
-        background-color: #244f5d;
-        border-radius: 0px 18px 0px 0px;
-      }
+     
     }
     .form1 {
       display: flex;
@@ -53,9 +50,12 @@
       }
       h2, h3 {
         text-align: left;
-        color: #070707; 
-       
+        color: #070707;
       }
+      .h3-spacing {
+        margin-bottom: 10px;
+      }
+      
       .input {
         background-color: white;
         outline: none;
@@ -84,6 +84,7 @@
         margin-top: 1vh;
         cursor: pointer;
       }
+  
     }
     .form2 {
       height: 100vh;
@@ -96,4 +97,22 @@
 
 .align {
   padding-left: 1.5vw;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  color: #6E7CF9;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 0;
 }

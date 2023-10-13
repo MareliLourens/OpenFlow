@@ -6,15 +6,12 @@ const ProfileRoute = () => {
   return (
     <div className={style.main}>
       <div className={style.loginBlock}>
-        {/* Remove the "Sign Up" button from the top section */}
         <div className={style.topSection}>
-          {/* No need for the "Sign Up" button here */}
         </div>
         <div className={style.formContainer}>
           <form className={[style.form1, style.form2].join(" ")}>
-          <p>Back</p>
-            <h2>Create an account</h2>
-            <h3>Fill in the details to get started</h3>
+            <h2>Welcome</h2>
+            <h3>Create an Account</h3> 
             <p>First Name</p>
             <input
               placeholder="Enter your First Name"
