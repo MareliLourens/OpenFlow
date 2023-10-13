@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Style.Profile.module.scss"; // Import the correct style
+import style from "./Style.Profile.module.scss"; 
 import loginLogo from "../../assets/images/Login-Logo.svg";
 
 const ProfileRoute = () => {
@@ -10,8 +10,10 @@ const ProfileRoute = () => {
         </div>
         <div className={style.formContainer}>
           <form className={[style.form1, style.form2].join(" ")}>
-            <h2>Welcome</h2>
-            <h3>Create an Account</h3> 
+
+
+            <h2>Create an account</h2>
+            <h3>Fill in the details to get started</h3> <br></br>
             <p>First Name</p>
             <input
               placeholder="Enter your First Name"

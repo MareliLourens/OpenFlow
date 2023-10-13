@@ -12,8 +12,10 @@ const LoginRoute = () => {
           {signOption === "signIn" ? (
             <form className={style.form1}>
               <div className={style.centered}>
+             
                 <h2>Welcome</h2>
                 <h3 className={style.centered} style={{ marginBottom: "10px" }}>Login to continue</h3>
+                <br></br>
               </div>
               <p>Your Email</p>
               <input
