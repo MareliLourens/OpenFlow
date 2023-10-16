@@ -1,17 +1,14 @@
 import React from "react";
-import style from "./Style.Profile.module.scss"; 
+import style from "./Style.Profile.module.scss";
 import loginLogo from "../../assets/images/Login-Logo.svg";
 
 const ProfileRoute = () => {
   return (
     <div className={style.main}>
       <div className={style.loginBlock}>
-        <div className={style.topSection}>
-        </div>
+        <div className={style.topSection}></div>
         <div className={style.formContainer}>
           <form className={[style.form1, style.form2].join(" ")}>
-
-
             <h2>Create an account</h2>
             <h3>Fill in the details to get started</h3> <br></br>
             <p>First Name</p>
@@ -39,11 +36,7 @@ const ProfileRoute = () => {
         </div>
       </div>
       <div className={style.imageContainer}>
-        <img
-          src={loginLogo}
-          alt="Login Image"
-          className={style.image}
-        />
+        <img src={loginLogo} alt="Login Image" className={style.image} />
       </div>
     </div>
   );
