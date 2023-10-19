@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose')
 const userRoute = require('./routes/users')
 const questionRoute = require('./routes/questions')
