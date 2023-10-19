@@ -1,10 +1,13 @@
 import React from "react";
 import style from "./Style.Tag.module.scss";
 
-const TagComponent = () => {
+const TagComponent = (props) => {
+
+  const tag = props.tag ?? "MongoDB";
+
   return (
     <div className={style.main}>
-      <p className={style.text}>MongoDB</p>
+      <p className={style.text}>{tag}</p>
     </div>
   );
 };

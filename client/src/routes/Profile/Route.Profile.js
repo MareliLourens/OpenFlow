@@ -2,6 +2,7 @@ import React from "react";
 import style from "./Style.Profile.module.scss";
 import loginLogo from "../../assets/images/Login-Logo.svg";
 import NavBarComponent from "../../components/NavBar-Component/Component.NavBar";
+import ProfileComponent from "../../components/Profile-Component/Component.Profile";
 
 const ProfileRoute = (props) => {
   const user = props.user;
@@ -9,7 +10,7 @@ const ProfileRoute = (props) => {
   return (
     <div className={style.main}>
       <NavBarComponent admin={admin} user={user} />
-      <h1>Profile</h1>
+      <ProfileComponent />
     </div>
   );
 };
