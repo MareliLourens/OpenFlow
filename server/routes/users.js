@@ -85,4 +85,26 @@ router.post("/api/login", async (req, res) => {
     }
   });
 
+  // verify token
+router.post("/api/verifytoken", async (req, res) => {
+  const token = req.body.token;
+  console.log(token);
+  try {
+    const decode = jwt.verify(token, secretKey);
+    const findUser = await userSchema.findOne({
+      _id: decode.userId,
+    });
+    console.log(findUser);
+    if (findUser) {
+      res.json({ status: "ok", verified: true, user: findUser });
+    } else {
+      res.json({ status: "bad1", verified: false });
+    }
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "bad2", verified: false});
+    console.log("somehting");
+  }
+});
+
 module.exports = router;
