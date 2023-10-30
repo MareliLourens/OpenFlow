@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import style from "./Style.QuestionBox.module.scss";
+import axios from "axios";
 
 const QuestionBoxComponent = () => {
   const [question, setQuestion] = useState({
