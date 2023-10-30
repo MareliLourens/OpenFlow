@@ -2,10 +2,10 @@ import React from "react";
 import style from "./Style.SmallQuestion.module.scss";
 import TagComponent from "../TagComponent/Component.Tag";
 
-const SmallQuestionComponent = () => {
+const SmallQuestionComponent = ({ question }) => {
   return (
     <div className={style.main}>
-      <p>How can I fidn elements that are geometrical close together?</p>
+      <p>{question.title}</p>
       <div className={style.tags}>
         <TagComponent />
       </div>
