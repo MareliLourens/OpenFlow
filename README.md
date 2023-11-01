@@ -69,6 +69,8 @@ Another area where we would like to expand and enhance the project is in making 
 ### Mockup Video
 
 
+https://github.com/MareliLourens/OpenFlow/assets/109971278/8f61f450-b44c-4f12-83a9-c5c9435bf0a6
+
 
 ## Conclusion
 This project has been an incredible learning experience for us, and we are truly grateful for the opportunity to work on it. Throughout the course of the project, we have learned so much, from technical skills to project management and collaboration.
