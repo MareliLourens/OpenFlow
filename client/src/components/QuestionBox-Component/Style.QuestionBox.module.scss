@@ -45,7 +45,10 @@
                     padding-left: 2vw;
                     font-weight: bold;
                     font-size: 18px;
+                    
                 }
+
+                
 
             }
 
@@ -94,6 +97,10 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                .DroppedImage{
+                    max-width: 90%;
+                    max-height: 90%;
+                }
             }
             .SubmitButton{
                 background-color: #6E7CF9;

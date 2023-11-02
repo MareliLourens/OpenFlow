@@ -42,6 +42,9 @@ const questionSchema = mongoose.Schema({
         required: true,
         default: [],
     },
+    UploadImg: {
+        type: String
+    },
     comments: {
         type: Array,
         required: true,

@@ -13,10 +13,13 @@ router.get("/api/getQuestions", async (req, res) => {
 router.post("/api/addQuestion", async (req, res) => {
   const question = new questionSchema({ ...req.body});
   try {
+    const imageQuestion = {
+      question_img: req.files['question_img'][0].path,
+    }
     const savedQuestion = await question.save();
     res.json(savedQuestion);
   } catch (err) {
-    res.json({ message: err });
+    res.status(500).json({ message: "Error uploading the image", error: err });
   }
 });
 
