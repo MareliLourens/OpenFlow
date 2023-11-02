@@ -39,7 +39,6 @@ In the initial brainstorming stage of the project, we took a look at Stack Overf
 ![home](./wireframes/home.png)
 ![questions](./wireframes/questions.png)
 ![answers](./wireframes/answers.png)
-![answered](./wireframes/answered_questions.png)
 ![profile](./wireframes/profile.png)
 
 ## Development Process
