@@ -2,26 +2,15 @@ import React, { useEffect, useState } from "react";
 import style from "./Style.QuestionBox.module.scss";
 import axios from "axios";
 
-const QuestionBoxComponent = () => {
-  // function allowDrop(ev) {
-  //   ev.preventDefault();
-  // }
-
-  // function drag(ev) {
-  //   ev.dataTransfer.setData("text", ev.target.id);
-  // }
-
-  // function drop(ev) {
-  //   ev.preventDefault();
-  //   var data = ev.dataTransfer.getData("text");
-  //   ev.target.appendChild(document.getElementById(data));
-  // }
+const QuestionBoxComponent = (props) => {
+  let user = props.user;
 
   const [question, setQuestion] = useState({
     title: "",
     tags: [],
     description: "",
-    author: "default"
+    author: "",
+    image: "",
   });
 
   const handleInputChange = (event) => {
@@ -32,18 +21,24 @@ const QuestionBoxComponent = () => {
     }));
     console.log(question);
   };
-  
 
   const handleAddQuestion = (e) => {
+    if (user) {
+      question.author = user.name;
+    } else {
+      question.author = "Anonymous";
+    }
     e.preventDefault();
     if (!question.title || !question.tags || !question.description) {
       console.log("Please fill out all fields.");
       return;
     } else {
-      axios.post(`http://localhost:5000/api/addQuestion`, question).then((res) => {
-        console.log(res);
-        console.log(res.data);
-      });
+      axios
+        .post(`http://localhost:5000/api/addQuestion`, question)
+        .then((res) => {
+          console.log(res);
+          console.log(res.data);
+        });
     }
   };
 
@@ -82,14 +77,22 @@ const QuestionBoxComponent = () => {
         <div className={style.right}>
           <div
             className={style.DropBox}
-            ondrop="drop(event)"
-            ondragover="allowDrop(event)"
           >
             <center>
-              Drag and Drop<br></br>Images here
+              Paste Image
+              <br />
+              Link Here:
+              <br />
+              <input
+                placeholder="https://..."
+                className={style.ImageLink}
+                name="image"
+                value={question.image}
+                onChange={handleInputChange}
+              ></input>
             </center>
           </div>
-          {/* <img id="drag1" src="img_logo.gif" draggable="true" ondragstart="drag(event)" width="336" height="69"></img> */}
+
           <button type="submit" className={style.SubmitButton}>
             Upload Question
           </button>

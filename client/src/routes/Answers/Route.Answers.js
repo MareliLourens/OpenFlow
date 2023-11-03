@@ -4,7 +4,9 @@ import QUESTIONComponent from "../../components/QuestionsComponent/Component.Que
 import NavBarComponent from "../../components/NavBar-Component/Component.NavBar";
 import axios from "axios";
 
-const AnswersRoute = () => {
+const AnswersRoute = (props) => {
+  const user = props.user;
+  const admin = props.admin;
 
   const [questions, setQuestions] = useState([]);
 
@@ -24,7 +26,7 @@ const AnswersRoute = () => {
   return (
     <div className={style.main}>
       <div className={style.content}>
-        <NavBarComponent />
+        <NavBarComponent admin={admin} user={user} />
         <div className={style.questionContainer}>
           <div className={style.unansweredSection}>
             <h2 className={style.sectionHeading}>Unanswered Questions</h2>

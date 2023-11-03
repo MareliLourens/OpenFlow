@@ -7,6 +7,7 @@ import AnswersRoute from './routes/Answers/Route.Answers';
 import SupportRoute from './routes/Support/Route.Support';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import SingleQuestionRoute from './routes/SingleQuestion/Route.SingleQuestion';
 
 function App() {
   const [admin, setAdmin] = useState(false);
@@ -42,7 +43,8 @@ function App() {
         <Route path="/profile" element={<ProfileRoute admin={admin} user={user}/>}/>
         <Route path="/questions" element={<QuestionsRoute admin={admin} user={user}/>}/>
         <Route path="/answers" element={<AnswersRoute admin={admin} user={user}/>}/>
-        <Route path="/support" element={<SupportRoute admin={admin} user={user}/>}/>  
+        <Route path="/support" element={<SupportRoute admin={admin} user={user}/>}/>
+        <Route path="/singlequestion" element={<SingleQuestionRoute admin={admin} user={user}/>}/>
       </Routes>
     </BrowserRouter>
   );

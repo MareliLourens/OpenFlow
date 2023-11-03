@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 const NavBarComponent = (props) => {
   const user = props.user;
   const admin = props.admin;
+  const urlLocation = window.location.href;
+  console.log(urlLocation);
 
   let email_href =
     "https://mail.google.com/mail/?view=cm&fs=1&to=200109@virtualwindow.co.za" +
@@ -45,6 +47,16 @@ const NavBarComponent = (props) => {
             </div>
           </Link>
         )}
+        {urlLocation == "http://localhost:3000/profile" && <Link to="/login">
+            <div className={style.link}>
+              <img
+                className={style.loginIcon}
+                src={loginIcon}
+                alt="Login Icon"
+              />
+              Logout
+            </div>
+          </Link> }
       </div>
     </div>
   );

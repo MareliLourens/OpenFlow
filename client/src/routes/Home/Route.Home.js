@@ -26,10 +26,10 @@ const HomeRoute = (props) => {
         <div className={style.topQuestions}>
           <h1>Top Questions</h1>
           <div className={style.questionCarousel}>
-            <SmallQuestionComponent />
-            <SmallQuestionComponent />
-            <SmallQuestionComponent />
-            <SmallQuestionComponent />
+            <SmallQuestionComponent question={"Where can I find my dependancies?"} answered={true} />
+            <SmallQuestionComponent question={"How do I add a CSS file?"} answered={true}/>
+            <SmallQuestionComponent question={"Snippet broken, please assist."} answered={false}/>
+            <SmallQuestionComponent question={"How do I install React?"} answered={true}/>
 
           </div>
         </div>

@@ -20,7 +20,6 @@ const LogInComponent = (props) => {
       alert("Please fill in all the fields");
     } else {
       console.log(userInfo);
-      alert("User Logged In! Navigating to Home Page");
       axios
       .post("http://localhost:5000/api/login", userInfo)
       .then((res) => {

@@ -20,8 +20,7 @@ const ProfileComponent = () => {
           } else {
           }
         })
-        .catch((error) => {
-        });
+        .catch((error) => {});
     }
   }, []);
 
@@ -33,7 +32,7 @@ const ProfileComponent = () => {
       <div className={style.content}>
         <div className={style.profileImageSection}>
           <div className={style.profileImage}>
-            <img src={userData.profileimage || ProfileTest} alt="Profile" />
+            <img src={"https://thispersondoesnotexist.com/"} alt="Profile" />
           </div>
         </div>
         <div className={style.infoSecion}>
@@ -42,11 +41,26 @@ const ProfileComponent = () => {
             <p className={style.text}>{userData.surname}</p>
           </div>
           <p>
-            Location: <span>{userData.location}</span>
+            Location: <span>Pretoria</span>
           </p>
           <br />
           <p>
-            Bio:
+            Bio:{" "}
+            {userData.name === "Tristan" ? (
+              <span>
+                I am a dedicated and passionate developer student, fully
+                invested in the world of coding and software development.
+                Currently honing my skills at Open Window, I am deeply
+                interested in various programming languages and techniques. With
+                a strong grasp of HTML, CSS, JS, React.
+              </span>
+            ) : (
+              <span>
+                Hey there! My name is {userData.name}, I am a second year at
+                OpenWindow studying Interaction Design. I am a very passionate
+                functionality developer.
+              </span>
+            )}
             <br />
             {userData.bio}
           </p>
@@ -54,11 +68,20 @@ const ProfileComponent = () => {
           <br />
           <p>Skills:</p>
           <div className={style.tagBox}>
-            {userData.skills &&
-              userData.skills.map((skill, index) => (
-                <TagComponent key={index} tag={skill} />
+            {userData.tags &&
+              userData.tags.map((tag, index) => (
+                <TagComponent key={index} tag={tag} />
               ))}
           </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d366.5403069962522!2d28.209465181573176!3d-25.891857442236645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e956608911ce097%3A0x519896b4b6eda40a!2sOpen%20Window-%20Centurion!5e0!3m2!1sen!2sza!4v1698950649303!5m2!1sen!2sza"
+            width="1100"
+            height="270px"
+            className={style.iframeBox}
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </div>
     </div>
@@ -66,4 +89,3 @@ const ProfileComponent = () => {
 };
 
 export default ProfileComponent;
-
