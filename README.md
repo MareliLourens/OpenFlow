@@ -116,15 +116,15 @@ Overall, this project has been an incredibly fulfilling experience, and we are e
 
 
 ## Authors
-Mareli Lourens - [Find me on Github](https://github.com/MareliLourens)
-Tebogo Ramolobeng - [Find me on Github](https://github.com/221244-Tebogo)
-Cameron Godwin - [Find me on Github](https://github.com/GodwinCameron)
+Mareli Lourens - [Find me on Github](https://github.com/MareliLourens)<br>
+Tebogo Ramolobeng - [Find me on Github](https://github.com/221244-Tebogo)<br>
+Cameron Godwin - [Find me on Github](https://github.com/GodwinCameron)<br>
 Tristan Storm - [Find me on Github](https://github.com/Tristanstormmm)
 
 ## Contact
-Mareli Lourens - [Email](mailto:221119@virtualwindow.co.za)
-Tebogo Ramolobeng - [Email](mailto:221244@virtualwindow.co.za)
-Cameron Godwin - [Email](mailto:200109@virtualwindow.co.za)
+Mareli Lourens - [Email](mailto:221119@virtualwindow.co.za)<br>
+Tebogo Ramolobeng - [Email](mailto:221244@virtualwindow.co.za)<br>
+Cameron Godwin - [Email](mailto:200109@virtualwindow.co.za)<br>
 Tristan Storm - [Email](mailto:221195@virtualwindow.co.za)
 <br>
 Project Link - https://github.com/MareliLourens/OpenFlow.git
