@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Style.Admin.module.scss";
+import trash from "../assets/icons/trash.svg";
 
 const AdminComponent = (props) => {
   let data = props.questionsData;
@@ -17,7 +18,10 @@ const AdminComponent = (props) => {
           <div className={style.languageTag}>{questionTag}</div>
         </div>
         {props.answered === true ? (
+          <div>
+          <img src={trash}/>
           <div className={style.statusIndicatorGreen}></div>
+          </div>
         ) : (
           <div className={style.statusIndicatorRed}></div>
         )}
