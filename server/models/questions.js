@@ -88,6 +88,10 @@ const questionSchema = mongoose.Schema({
         required: true,
         default: false,
     },
+    image: {
+        type: String,
+        required: false,
+    }
 
 
 });

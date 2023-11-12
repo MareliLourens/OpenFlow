@@ -3,11 +3,15 @@ import style from "./Style.Home.module.scss";
 import NavBarComponent from "../../components/NavBar-Component/Component.NavBar";
 import SmallQuestionComponent from "../../components/SmallQuestion-Component/Component.SmallQuestion";
 
-const HomeRoute = () => {
+const HomeRoute = (props) => {
+
+  const user = props.user;
+  const admin = props.admin;
+
   return (
     <div className={style.main}>
       <div className={style.content}>
-        <NavBarComponent />
+        <NavBarComponent admin={admin} user={user} />
         <h1 className={style.heading}> Welcome To OpenFlow!</h1>
         <p className={style.text}>
           Empowering Curiosity. Connect, Ask, and Share Knowledge with Our
@@ -22,10 +26,10 @@ const HomeRoute = () => {
         <div className={style.topQuestions}>
           <h1>Top Questions</h1>
           <div className={style.questionCarousel}>
-            <SmallQuestionComponent />
-            <SmallQuestionComponent />
-            <SmallQuestionComponent />
-            <SmallQuestionComponent />
+            <SmallQuestionComponent question={"Where can I find my dependancies?"} answered={true} />
+            <SmallQuestionComponent question={"How do I add a CSS file?"} answered={true}/>
+            <SmallQuestionComponent question={"Snippet broken, please assist."} answered={false}/>
+            <SmallQuestionComponent question={"How do I install React?"} answered={true}/>
 
           </div>
         </div>

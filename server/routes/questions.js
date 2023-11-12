@@ -9,17 +9,24 @@ router.get("/api/getQuestions", async (req, res) => {
   res.json(questions);
 });
 
+// Get single question
+router.get("/api/getQuestion/:questionId", async (req, res) => {
+  try {
+    const question = await questionSchema.findById(req.params.questionId);
+    res.json(question);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
 // Add a question
 router.post("/api/addQuestion", async (req, res) => {
   const question = new questionSchema({ ...req.body});
   try {
-    const imageQuestion = {
-      question_img: req.files['question_img'][0].path,
-    }
     const savedQuestion = await question.save();
     res.json(savedQuestion);
   } catch (err) {
-    res.status(500).json({ message: "Error uploading the image", error: err });
+    res.status(500).json({ error: err });
   }
 });
 
