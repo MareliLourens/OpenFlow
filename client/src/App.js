@@ -11,9 +11,35 @@ import SingleQuestionRoute from './routes/SingleQuestion/Route.SingleQuestion';
 import Admin from './routes/Admin/Route.Admin';
 
 function App() {
+  const [admin, setAdmin] = useState(false);
+  const [user, setUser] = useState(false);
+ 
+   useEffect(()=>{
+     
+     let verifyUser = {token: sessionStorage.getItem('JWT')};
+     if(!verifyUser.token){
+       sessionStorage.clear();
+     }else{
+       axios.post('http://localhost:5000/api/verifytoken', verifyUser)
+       .then(res =>{
+         if(res.data.verified === false){
+          //  sessionStorage.clear();
+          console.log('no verified');
+          console.log(res.data);
+         } else if (res.data.user.superuser === true) {
+           setUser(res.data.user);
+           setAdmin(true);
+         } else {
+           setUser(res.data.user);
+         }
+       })
+     }
+   }, []);
+
   return (
     <BrowserRouter>
       <Routes>
+
         <Route path="/" element={<HomeRoute admin={admin} user={user}/>}/>
         <Route path="/login" element={<LoginRoute admin={admin} user={user}/>}/>
         <Route path="/profile" element={<ProfileRoute admin={admin} user={user}/>}/>
