@@ -1,6 +1,7 @@
-import React from "react";
 import style from "./Style.Admin.module.scss";
-import trash from "../assets/icons/trash.svg";
+import trash from "../../assets/icons/trash.svg";
+import axios from "axios";
+import React, { useState } from "react";
 
 const AdminComponent = (props) => {
   let data = props.questionsData;
@@ -8,7 +9,21 @@ const AdminComponent = (props) => {
   let questionTitle = data.title;
   let questionTag = data.tags;
 
-  console.log(props);
+  // Make sure Questions is initialized as an array
+  const [Questions, setQuestions] = useState(Array.isArray(props.questionsData) ? props.questionsData : []);
+
+  const handleDelete = async () => {
+    try {
+      // Make an Axios DELETE request to your server endpoint
+      await axios.delete(`http://localhost:5000/api/deleteQuestion/${data._id}`);
+      window.location.reload(false);
+
+      // Update the state by filtering out the deleted question
+      setQuestions(Questions.filter(question => question._id !== data._id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className={style.main}>
@@ -19,13 +34,16 @@ const AdminComponent = (props) => {
         </div>
         {props.answered === true ? (
           <div>
-          <img src={trash}/>
-          <div className={style.statusIndicatorGreen}></div>
+            <img className={style.trash} src={trash} alt="Delete" onClick={handleDelete} />
+            <div className={style.statusIndicatorGreen}></div>
           </div>
         ) : (
-          <div className={style.statusIndicatorRed}></div>
+          <div>
+            <img className={style.trash} src={trash} alt="Delete" onClick={handleDelete} />
+            <div className={style.statusIndicatorRed}></div>
+          </div>
         )}
-        <div className={style.showDescription}><a href={"/singlequestion?id="+data._id}>See Description</a></div>
+        <div className={style.showDescription}><a href={`/singlequestion?id=${data._id}`}>See Description</a></div>
       </div>
     </div>
   );
