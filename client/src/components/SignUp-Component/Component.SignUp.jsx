@@ -10,12 +10,15 @@ const SignUpComponent = (props) => {
     email: "",
     password: "",
   });
+
   const handleLoginType = () => {
     props.loginType("login");
   };
 
   const handleCreateUser = (e) => {
     e.preventDefault();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (
       userData.name === "" ||
       userData.surname === "" ||
@@ -23,6 +26,8 @@ const SignUpComponent = (props) => {
       userData.password === ""
     ) {
       alert("Please fill in all the fields");
+    } else if (!emailRegex.test(userData.email)) {
+      alert("Please enter a valid email address");
     } else {
       console.log(userData);
       axios
