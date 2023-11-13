@@ -14,7 +14,7 @@ const SingleQuestionRoute = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/getQuestion/${questionId}`)
+      .get(`http://localhost:5001/api/getQuestion/${questionId}`)
       .then((response) => {
         let data = response.data;
         console.log(data);

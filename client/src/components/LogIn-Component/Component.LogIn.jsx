@@ -21,7 +21,7 @@ const LogInComponent = (props) => {
     } else {
       console.log(userInfo);
       axios
-      .post("http://localhost:5000/api/login", userInfo)
+      .post("http://localhost:5001/api/login", userInfo)
       .then((res) => {
         console.log(res);
         sessionStorage.setItem("JWT", res.data.token);

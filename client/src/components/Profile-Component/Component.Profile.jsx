@@ -31,7 +31,7 @@ const ProfileComponent = () => {
     const token = sessionStorage.getItem("JWT");
 
     try {
-      const response = await axios.delete(`http://localhost:5000/api/deleteUser/${userData._id}`, {
+      const response = await axios.delete(`http://localhost:5001/api/deleteUser/${userData._id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
