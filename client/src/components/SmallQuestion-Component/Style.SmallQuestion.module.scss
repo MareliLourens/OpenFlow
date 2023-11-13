@@ -8,7 +8,6 @@
     padding: 1vw;
     border-radius: 10px;
     color: #ffffff;
-    align-items: center;
     flex-direction: column;
     .tags{
         margin-top: 10px;
@@ -36,5 +35,14 @@
     
     .statusIndicatorGreen {
       background: #008000;
+    }
+    .questiontext{
+      font-size: 20px;
+      margin-bottom: 10px;
+        display: flex;
+        width: 100%;
+        height: fit-content;
+        gap: 0.2vw;
+        flex-wrap: wrap;
     }
 }

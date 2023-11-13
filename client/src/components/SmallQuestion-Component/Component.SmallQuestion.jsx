@@ -1,16 +1,18 @@
-import React from "react";
 import style from "./Style.SmallQuestion.module.scss";
 import TagComponent from "../TagComponent/Component.Tag";
+import React from "react";
 
-const SmallQuestionComponent = ({ question }) => {
+const SmallQuestionComponent = ({ title, tags }) => {
   return (
     <div className={style.main}>
-      <p>{question.title}</p>
-      <div className={style.tags}>
-        <TagComponent />
-        
+      <div>
+        <p className={style.questiontext}>{title}</p>
+        <div className={style.tags}>
+          {tags.map((tag, index) => (
+            <TagComponent key={index} tag={tag} />
+          ))}
+        </div>
       </div>
-      
     </div>
   );
 };

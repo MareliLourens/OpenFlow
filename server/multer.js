@@ -1,34 +1,55 @@
+const express = require('express');
 const multer = require('multer');
-const mimeTypes = ['image/webp', 'image/png', 'image/jpg', 'image/jpeg', 'image/svg+xml'];
+const fs = require('fs');
 
+const app = express();
+const port = 5000;
 
-const fileFilter = (req, file, cb) => {
-  if (mimeTypes.includes(file.mimetype)) {
-    cb(null, true);
-  } else {
-    cb(new Error('Invalid file type. Only JPEG, PNG, JPG, GIF are allowed.'), false);
-  }
-};
+// Create the uploads directory if it doesn't exist
+const uploadDir = './uploads/';
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
 
+// Multer configuration
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './uploads/')
+    cb(null, uploadDir);
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname)
+    cb(null, Date.now() + '-' + file.originalname);
   }
-})
+});
+
+const fileFilter = (req, file, cb) => {
+  const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+  if (allowedMimeTypes.includes(file.mimetype)) {
+    cb(null, true);
+  } else {
+    cb(new Error('Invalid file type. Only JPEG, PNG, and GIF are allowed.'), false);
+  }
+};
 
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 1024 * 1024 * 5
+    fileSize: 1024 * 1024 * 5 // 5 MB limit
   },
   fileFilter: fileFilter
 });
 
-const uploadFields = upload.fields([
-  { name: 'question_img', maxCount: 1 }
-]);
+app.post('/upload', upload.single('image'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: 'No file uploaded.' });
+  }
 
-module.exports = uploadFields;
+  const imagePath = req.file.path;
+  // You can do further processing or save the file path in the database here
+
+  res.status(200).json({ message: 'File uploaded successfully.', imagePath: imagePath });
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});

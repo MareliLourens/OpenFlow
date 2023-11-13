@@ -10,31 +10,46 @@ const QuestionBoxComponent = (props) => {
     tags: [],
     description: "",
     author: "",
-    image: "",
+    image: null,
   });
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setQuestion((prevQuestion) => ({
-      ...prevQuestion,
-      [name]: value,
-    }));
-    console.log(question);
+    const { name, value, type } = event.target;
+
+    if (type === "file") {
+      setQuestion((prevQuestion) => ({
+        ...prevQuestion,
+        [name]: event.target.files[0],
+      }));
+    } else {
+      setQuestion((prevQuestion) => ({
+        ...prevQuestion,
+        [name]: value,
+      }));
+    }
   };
 
   const handleAddQuestion = (e) => {
+    e.preventDefault();
+
     if (user) {
       question.author = user.name;
     } else {
       question.author = "Anonymous";
     }
-    e.preventDefault();
-    if (!question.title || !question.tags || !question.description) {
+
+    const formData = new FormData();
+    formData.append("title", question.title);
+    formData.append("tags", JSON.stringify(question.tags));
+    formData.append("description", question.description);
+    formData.append("author", question.author);
+    formData.append("image", question.image);
+
+    if (!question.title || !question.tags || !question.description || !question.image) {
       console.log("Please fill out all fields.");
       return;
     } else {
-      axios
-        .post(`http://localhost:5000/api/addQuestion`, question)
+      axios.post(`http://localhost:5000/api/addQuestion`, formData)
         .then((res) => {
           console.log(res);
           console.log(res.data);
@@ -75,21 +90,19 @@ const QuestionBoxComponent = (props) => {
           </div>
         </div>
         <div className={style.right}>
-          <div
-            className={style.DropBox}
-          >
+          <div className={style.DropBox}>
             <center>
-              Paste Image
-              <br />
-              Link Here:
-              <br />
+              <label htmlFor="image" className={style.ImageLabel}>
+                Upload Image
+              </label>
               <input
-                placeholder="https://..."
-                className={style.ImageLink}
-                name="image"
-                value={question.image}
+                type="file"
+                id="image"
+                accept="image/*"
                 onChange={handleInputChange}
-              ></input>
+                className={style.ImageInput}
+                name="image"
+              />
             </center>
           </div>
 

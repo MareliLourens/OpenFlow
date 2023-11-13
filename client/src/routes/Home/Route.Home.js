@@ -1,12 +1,36 @@
-import React from "react";
 import style from "./Style.Home.module.scss";
 import NavBarComponent from "../../components/NavBar-Component/Component.NavBar";
 import SmallQuestionComponent from "../../components/SmallQuestion-Component/Component.SmallQuestion";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const HomeRoute = (props) => {
-
   const user = props.user;
   const admin = props.admin;
+
+  const [questions, setQuestions] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/getQuestions")
+      .then((response) => {
+        let data = response.data;
+        console.log(data);
+        setQuestions(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredQuestions = questions.filter((q) =>
+    q.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className={style.main}>
@@ -21,16 +45,16 @@ const HomeRoute = (props) => {
           <input
             placeholder="Start Typing..."
             className={style.searchInput}
-          ></input>
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
         </div>
         <div className={style.topQuestions}>
           <h1>Top Questions</h1>
           <div className={style.questionCarousel}>
-            <SmallQuestionComponent question={"Where can I find my dependancies?"} answered={true} />
-            <SmallQuestionComponent question={"How do I add a CSS file?"} answered={true}/>
-            <SmallQuestionComponent question={"Snippet broken, please assist."} answered={false}/>
-            <SmallQuestionComponent question={"How do I install React?"} answered={true}/>
-
+            {filteredQuestions.map((q, index) => (
+              <SmallQuestionComponent key={index} title={q.title} tags={q.tags} />
+            ))}
           </div>
         </div>
       </div>
