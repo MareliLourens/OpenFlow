@@ -31,7 +31,7 @@ const SignUpComponent = (props) => {
     } else {
       console.log(userData);
       axios
-        .post("http://localhost:5000/api/addUser", userData)
+        .post("http://localhost:5001/api/addUser", userData)
         .then((res) => console.log(res.data))
         .catch((err) => console.log(err));
       alert("User Created! Navigating to Login Page");
