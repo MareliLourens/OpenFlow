@@ -78,8 +78,4 @@ const SingleQuestionRoute = (props) => {
   );
 };
 
-<<<<<<< HEAD
 export default SingleQuestionRoute;
-=======
-export default SingleQuestionRoute;
->>>>>>> main
