@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const jwt = require("jsonwebtoken");
 const userSchema = require("../models/users");
 const router = express();
@@ -35,10 +35,11 @@ router.get("/api/getUser/:userId", async (req, res) => {
 // Delete a specific user
 router.delete("/api/deleteUser/:userId", async (req, res) => {
   try {
-    const removedUser = await userSchema.remove({ _id: req.params.userId });
+    const removedUser = await userSchema.deleteOne({ _id: req.params.userId });
     res.json(removedUser);
   } catch (err) {
-    res.json({ message: err });
+    console.error("Error deleting user:", err);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
