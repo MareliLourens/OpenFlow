@@ -12,7 +12,11 @@ const AnswersRoute = (props) => {
 
   useEffect(() => {
     axios
+<<<<<<< HEAD
       .get("http://localhost:5001/api/getQuestions")
+=======
+      .get("http://localhost:5000/api/getQuestions")
+>>>>>>> main
       .then((response) => {
         let data = response.data;
         console.log(data);

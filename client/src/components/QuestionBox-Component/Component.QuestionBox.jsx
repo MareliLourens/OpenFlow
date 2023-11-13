@@ -10,6 +10,7 @@ const QuestionBoxComponent = (props) => {
     tags: [],
     description: "",
     author: "",
+<<<<<<< HEAD
     image: "",
   });
 
@@ -23,11 +24,36 @@ const QuestionBoxComponent = (props) => {
   };
 
   const handleAddQuestion = (e) => {
+=======
+    image: null,
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value, type } = event.target;
+
+    if (type === "file") {
+      setQuestion((prevQuestion) => ({
+        ...prevQuestion,
+        [name]: event.target.files[0],
+      }));
+    } else {
+      setQuestion((prevQuestion) => ({
+        ...prevQuestion,
+        [name]: value,
+      }));
+    }
+  };
+
+  const handleAddQuestion = (e) => {
+    e.preventDefault();
+
+>>>>>>> main
     if (user) {
       question.author = user.name;
     } else {
       question.author = "Anonymous";
     }
+<<<<<<< HEAD
     e.preventDefault();
     if (!question.title || !question.tags || !question.description) {
       console.log("Please fill out all fields.");
@@ -35,6 +61,21 @@ const QuestionBoxComponent = (props) => {
     } else {
       axios
         .post(`http://localhost:5001/api/addQuestion`, question)
+=======
+
+    const formData = new FormData();
+    formData.append("title", question.title);
+    formData.append("tags", JSON.stringify(question.tags));
+    formData.append("description", question.description);
+    formData.append("author", question.author);
+    formData.append("image", question.image);
+
+    if (!question.title || !question.tags || !question.description || !question.image) {
+      console.log("Please fill out all fields.");
+      return;
+    } else {
+      axios.post(`http://localhost:5000/api/addQuestion`, formData)
+>>>>>>> main
         .then((res) => {
           console.log(res);
           console.log(res.data);
@@ -75,6 +116,7 @@ const QuestionBoxComponent = (props) => {
           </div>
         </div>
         <div className={style.right}>
+<<<<<<< HEAD
           <div
             className={style.DropBox}
           >
@@ -90,6 +132,21 @@ const QuestionBoxComponent = (props) => {
                 value={question.image}
                 onChange={handleInputChange}
               ></input>
+=======
+          <div className={style.DropBox}>
+            <center>
+              <label htmlFor="image" className={style.ImageLabel}>
+                Upload Image
+              </label>
+              <input
+                type="file"
+                id="image"
+                accept="image/*"
+                onChange={handleInputChange}
+                className={style.ImageInput}
+                name="image"
+              />
+>>>>>>> main
             </center>
           </div>
 
@@ -102,4 +159,8 @@ const QuestionBoxComponent = (props) => {
   );
 };
 
+<<<<<<< HEAD
 export default QuestionBoxComponent;
+=======
+export default QuestionBoxComponent;
+>>>>>>> main

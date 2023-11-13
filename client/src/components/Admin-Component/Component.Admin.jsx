@@ -15,7 +15,11 @@ const AdminComponent = (props) => {
   const handleDelete = async () => {
     try {
       // Make an Axios DELETE request to your server endpoint
+<<<<<<< HEAD
       await axios.delete(`http://localhost:5001/api/deleteQuestion/${data._id}`);
+=======
+      await axios.delete(`http://localhost:5000/api/deleteQuestion/${data._id}`);
+>>>>>>> main
       window.location.reload(false);
 
       // Update the state by filtering out the deleted question
