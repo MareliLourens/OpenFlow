@@ -1,5 +1,3 @@
-// QUESTIONComponent.js
-
 import React from "react";
 import { Link } from "react-router-dom";
 import style from "./Style.Questions.module.scss";
@@ -21,7 +19,7 @@ const QUESTIONComponent = (props) => {
               <TagComponent className={style.languageTag} key={index} tag={tag} />
             ))}
           </div>
-        </div>
+          </div>
         {props.answered === true ? (
           <div className={style.statusIndicatorGreen}></div>
         ) : (
@@ -36,3 +34,4 @@ const QUESTIONComponent = (props) => {
 };
 
 export default QUESTIONComponent;
+
