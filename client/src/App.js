@@ -20,7 +20,7 @@ function App() {
      if(!verifyUser.token){
        sessionStorage.clear();
      }else{
-       axios.post('http://localhost:5002/api/verifytoken', verifyUser)
+       axios.post('http://localhost:5001/api/verifytoken', verifyUser)
        .then(res =>{
          if(res.data.verified === false){
           //  sessionStorage.clear();
