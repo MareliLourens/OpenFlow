@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "../SingleQuestion/Style.SingleQuestion.module.scss";
-<<<<<<< HEAD
 import QUESTIONComponent from "../../components/QuestionsComponent/Component.Questions";
-=======
->>>>>>> main
 import NavBarComponent from "../../components/NavBar-Component/Component.NavBar";
 import axios from "axios";
 import TagComponent from "../../components/TagComponent/Component.Tag";
