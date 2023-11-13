@@ -21,12 +21,20 @@ const LogInComponent = (props) => {
     } else {
       console.log(userInfo);
       axios
+<<<<<<< HEAD
+      .post("http://localhost:5001/api/login", userInfo)
+=======
       .post("http://localhost:5000/api/login", userInfo)
+>>>>>>> main
       .then((res) => {
         console.log(res);
         sessionStorage.setItem("JWT", res.data.token);
         console.log(sessionStorage.getItem("JWT"));
+<<<<<<< HEAD
+        window.location.href = "/";
+=======
         window.location.href = "/home";
+>>>>>>> main
       })
       .catch((err) => {
         console.log(err);

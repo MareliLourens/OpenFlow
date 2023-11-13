@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import style from "../SingleQuestion/Style.SingleQuestion.module.scss";
+<<<<<<< HEAD
+import QUESTIONComponent from "../../components/QuestionsComponent/Component.Questions";
+=======
+>>>>>>> main
 import NavBarComponent from "../../components/NavBar-Component/Component.NavBar";
 import axios from "axios";
 import TagComponent from "../../components/TagComponent/Component.Tag";
@@ -14,7 +18,11 @@ const SingleQuestionRoute = (props) => {
 
   useEffect(() => {
     axios
+<<<<<<< HEAD
+      .get(`http://localhost:5001/api/getQuestion/${questionId}`)
+=======
       .get(`http://localhost:5000/api/getQuestion/${questionId}`)
+>>>>>>> main
       .then((response) => {
         let data = response.data;
         console.log(data);
@@ -70,4 +78,8 @@ const SingleQuestionRoute = (props) => {
   );
 };
 
+<<<<<<< HEAD
 export default SingleQuestionRoute;
+=======
+export default SingleQuestionRoute;
+>>>>>>> main

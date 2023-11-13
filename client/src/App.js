@@ -14,38 +14,39 @@ function App() {
   const [admin, setAdmin] = useState(false);
   const [user, setUser] = useState(false);
  
+   useEffect(()=>{
+     
+     let verifyUser = {token: sessionStorage.getItem('JWT')};
+     if(!verifyUser.token){
+       sessionStorage.clear();
+     }else{
+       axios.post('http://localhost:5002/api/verifytoken', verifyUser)
+       .then(res =>{
+         if(res.data.verified === false){
+          //  sessionStorage.clear();
+          console.log('no verified');
+          console.log(res.data);
+         } else if (res.data.user.superuser === true) {
+           setUser(res.data.user);
+           setAdmin(true);
+         } else {
+           setUser(res.data.user);
+         }
+       })
+     }
+   }, []);
 
-  useEffect(() => {
-    let verifyUser = { token: sessionStorage.getItem('JWT') };
-    if (!verifyUser.token) {
-      sessionStorage.clear();
-    } else {
-      axios
-        .post('http://localhost:5000/api/verifytoken', verifyUser)
-        .then((res) => {
-          if (res.data.verified === false) {
-            //  sessionStorage.clear();
-            console.log('no verified');
-            console.log(res.data);
-          } else if (res.data.user.superuser === true) {
-            setUser(res.data.user);
-            setAdmin(true);
-          } else {
-            setUser(res.data.user);
-          }
-        });
-    }
-  }, []);
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/home' element={<HomeRoute  user={user} />} />
-        <Route path='/' element={<LoginRoute user={user} />} />
-        <Route path='/profile' element={<ProfileRoute user={user} />}/>
-        <Route path='/questions' element={<QuestionsRoute user={user} />}/>
-        <Route path='/answers' element={<AnswersRoute user={user} />}/>
-        <Route path="/singlequestion" element={<SingleQuestionRoute user={user}/>}/>
-        <Route path='/support'element={<SupportRoute  user={user} />}/>
+
+        <Route path="/home" element={<HomeRoute admin={admin} user={user}/>}/>
+        <Route path="/" element={<LoginRoute admin={admin} user={user}/>}/>
+        <Route path="/profile" element={<ProfileRoute admin={admin} user={user}/>}/>
+        <Route path="/questions" element={<QuestionsRoute admin={admin} user={user}/>}/>
+        <Route path="/answers" element={<AnswersRoute admin={admin} user={user}/>}/>
+        <Route path="/support" element={<SupportRoute admin={admin} user={user}/>}/>
+        <Route path="/singlequestion" element={<SingleQuestionRoute admin={admin} user={user}/>}/>
         <Route path="/admin" element={<Admin admin={admin}/>}/>
       </Routes>
     </BrowserRouter>
@@ -53,4 +54,3 @@ function App() {
 }
 
 export default App;
-

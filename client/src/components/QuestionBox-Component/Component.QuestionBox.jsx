@@ -10,6 +10,21 @@ const QuestionBoxComponent = (props) => {
     tags: [],
     description: "",
     author: "",
+<<<<<<< HEAD
+    image: "",
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setQuestion((prevQuestion) => ({
+      ...prevQuestion,
+      [name]: value,
+    }));
+    console.log(question);
+  };
+
+  const handleAddQuestion = (e) => {
+=======
     image: null,
   });
 
@@ -32,11 +47,21 @@ const QuestionBoxComponent = (props) => {
   const handleAddQuestion = (e) => {
     e.preventDefault();
 
+>>>>>>> main
     if (user) {
       question.author = user.name;
     } else {
       question.author = "Anonymous";
     }
+<<<<<<< HEAD
+    e.preventDefault();
+    if (!question.title || !question.tags || !question.description) {
+      console.log("Please fill out all fields.");
+      return;
+    } else {
+      axios
+        .post(`http://localhost:5001/api/addQuestion`, question)
+=======
 
     const formData = new FormData();
     formData.append("title", question.title);
@@ -50,6 +75,7 @@ const QuestionBoxComponent = (props) => {
       return;
     } else {
       axios.post(`http://localhost:5000/api/addQuestion`, formData)
+>>>>>>> main
         .then((res) => {
           console.log(res);
           console.log(res.data);
@@ -90,6 +116,23 @@ const QuestionBoxComponent = (props) => {
           </div>
         </div>
         <div className={style.right}>
+<<<<<<< HEAD
+          <div
+            className={style.DropBox}
+          >
+            <center>
+              Paste Image
+              <br />
+              Link Here:
+              <br />
+              <input
+                placeholder="https://..."
+                className={style.ImageLink}
+                name="image"
+                value={question.image}
+                onChange={handleInputChange}
+              ></input>
+=======
           <div className={style.DropBox}>
             <center>
               <label htmlFor="image" className={style.ImageLabel}>
@@ -103,6 +146,7 @@ const QuestionBoxComponent = (props) => {
                 className={style.ImageInput}
                 name="image"
               />
+>>>>>>> main
             </center>
           </div>
 
@@ -115,4 +159,8 @@ const QuestionBoxComponent = (props) => {
   );
 };
 
+<<<<<<< HEAD
 export default QuestionBoxComponent;
+=======
+export default QuestionBoxComponent;
+>>>>>>> main
