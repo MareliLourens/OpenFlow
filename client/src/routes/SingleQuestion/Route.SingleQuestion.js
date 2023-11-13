@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import style from "../SingleQuestion/Style.SingleQuestion.module.scss";
-import QUESTIONComponent from "../../components/QuestionsComponent/Component.Questions";
 import NavBarComponent from "../../components/NavBar-Component/Component.NavBar";
 import axios from "axios";
 import TagComponent from "../../components/TagComponent/Component.Tag";
 
 const SingleQuestionRoute = (props) => {
+  const { id } = useParams(); // Use useParams to get the questionId
   const user = props.user;
   const admin = props.admin;
-  const urlParams = new URLSearchParams(window.location.search);
-  const questionId = urlParams.get("id");
 
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/getQuestion/${questionId}`)
+      .get(`http://localhost:5000/api/getQuestion/${id}`)
       .then((response) => {
         let data = response.data;
         console.log(data);
@@ -24,7 +23,7 @@ const SingleQuestionRoute = (props) => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [id]);
 
   const formattedDate = new Date(data.date).toLocaleString("en-US", {
     year: "numeric",
@@ -49,7 +48,7 @@ const SingleQuestionRoute = (props) => {
             {data.image && (
               <>
                 <p>Image:</p>
-                <img className={style.questionImage} src={data.image} />
+                <img className={style.questionImage} src={data.image} alt="Question" />
               </>
             )}
             {data.tags && (

@@ -70,17 +70,37 @@ const ProfileComponent = () => {
           </p>
           <br />
           <p>
-            Bio: {userData.bio}
+            Bio:{" "}
+            {userData.name === "Tristan" ? (
+              <span>
+                I am a dedicated and passionate developer student, fully
+                invested in the world of coding and software development.
+                Currently honing my skills at Open Window, I am deeply
+                interested in various programming languages and techniques. With
+                a strong grasp of HTML, CSS, JS, React.
+              </span>
+            ) : (
+              <span>
+                Hey there! My name is {userData.name}, I am a second year at
+                OpenWindow studying Interaction Design. I am a very passionate
+                functionality developer.
+              </span>
+            )}
+            <br />
+            {userData.bio}
           </p>
           <div className={style.lineBreak}></div>
           <br />
           <p>Skills:</p>
           <div className={style.tagBox}>
-            {userData.tags &&
-              userData.tags.map((tag, index) => (
-                <TagComponent key={index} tag={tag} />
-              ))}
-          </div>
+        {userData.tags && userData.tags.length > 0 ? (
+          userData.tags.map((tag, index) => (
+            <TagComponent key={index} tag={tag} />
+          ))
+        ) : (
+          <p>This user hasn't gained any skills yet.</p>
+        )}
+      </div>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d366.5403069962522!2d28.209465181573176!3d-25.891857442236645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e956608911ce097%3A0x519896b4b6eda40a!2sOpen%20Window-%20Centurion!5e0!3m2!1sen!2sza!4v1698950649303!5m2!1sen!2sza"
             width="1100"

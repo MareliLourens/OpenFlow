@@ -1,5 +1,9 @@
+// QUESTIONComponent.js
+
 import React from "react";
+import { Link } from "react-router-dom";
 import style from "./Style.Questions.module.scss";
+import TagComponent from "../TagComponent/Component.Tag";
 
 const QUESTIONComponent = (props) => {
   let data = props.questionsData;
@@ -7,21 +11,25 @@ const QUESTIONComponent = (props) => {
   let questionTitle = data.title;
   let questionTag = data.tags;
 
-  console.log(props);
-
   return (
     <div className={style.main}>
       <div className={style.questionBlock}>
         <div className={style.question}>
           <p>{questionTitle}</p>
-          <div className={style.languageTag}>{questionTag}</div>
+          <div className={style.tagsposition}>
+            {questionTag.map((tag, index) => (
+              <TagComponent className={style.languageTag} key={index} tag={tag} />
+            ))}
+          </div>
         </div>
         {props.answered === true ? (
           <div className={style.statusIndicatorGreen}></div>
         ) : (
           <div className={style.statusIndicatorRed}></div>
         )}
-        <div className={style.showDescription}><a href={"/singlequestion?id="+data._id}>See Description</a></div>
+        <div className={style.showDescription}>
+          <Link to={`/singlequestion/${data._id}`}>See Description</Link>
+        </div>
       </div>
     </div>
   );
