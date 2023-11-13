@@ -10,12 +10,15 @@ const SignUpComponent = (props) => {
     email: "",
     password: "",
   });
+
   const handleLoginType = () => {
     props.loginType("login");
   };
 
   const handleCreateUser = (e) => {
     e.preventDefault();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (
       userData.name === "" ||
       userData.surname === "" ||
@@ -23,10 +26,12 @@ const SignUpComponent = (props) => {
       userData.password === ""
     ) {
       alert("Please fill in all the fields");
+    } else if (!emailRegex.test(userData.email)) {
+      alert("Please enter a valid email address");
     } else {
       console.log(userData);
       axios
-        .post("http://localhost:5001/api/addUser", userData)
+        .post("http://localhost:5000/api/addUser", userData)
         .then((res) => console.log(res.data))
         .catch((err) => console.log(err));
       alert("User Created! Navigating to Login Page");

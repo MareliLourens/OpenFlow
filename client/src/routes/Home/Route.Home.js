@@ -13,7 +13,7 @@ const HomeRoute = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001/api/getQuestions")
+      .get("http://localhost:5000/api/getQuestions")
       .then((response) => {
         let data = response.data;
         console.log(data);

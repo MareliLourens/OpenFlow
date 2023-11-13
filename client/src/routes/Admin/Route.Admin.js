@@ -12,7 +12,7 @@ const AdminRoute = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001/api/getQuestions")
+      .get("http://localhost:5000/api/getQuestions")
       .then((response) => {
         let data = response.data;
         console.log(data);
@@ -29,7 +29,7 @@ const AdminRoute = (props) => {
     const token = sessionStorage.getItem("JWT");
     if (token) {
       axios
-        .post("http://localhost:5001/api/verifytoken", { token })
+        .post("http://localhost:5000/api/verifytoken", { token })
         .then((response) => {
           if (response.data.verified) {
             setUserData(response.data.user);
