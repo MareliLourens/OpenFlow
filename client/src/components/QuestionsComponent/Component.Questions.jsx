@@ -26,7 +26,7 @@ const QUESTIONComponent = (props) => {
           <div className={style.statusIndicatorRed}></div>
         )}
         <div className={style.showDescription}>
-          <Link to={`/singlequestion/${data._id}`}>See Description</Link>
+        <Link to={`/singlequestion?id=${data._id}`}>See Description</Link>
         </div>
       </div>
     </div>
@@ -34,4 +34,6 @@ const QUESTIONComponent = (props) => {
 };
 
 export default QUESTIONComponent;
+
+
 

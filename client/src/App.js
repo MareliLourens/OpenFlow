@@ -44,6 +44,7 @@ function App() {
         <Route path='/profile' element={<ProfileRoute user={user} />}/>
         <Route path='/questions' element={<QuestionsRoute user={user} />}/>
         <Route path='/answers' element={<AnswersRoute user={user} />}/>
+        <Route path="/singlequestion" element={<SingleQuestionRoute user={user}/>}/>
         <Route path='/support'element={<SupportRoute  user={user} />}/>
         <Route path="/admin" element={<Admin admin={admin}/>}/>
       </Routes>
