@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import style from "./Style.Questions.module.scss";
 import NavBarComponent from "../../components/NavBar-Component/Component.NavBar";
-import SmallQuestionComponent from "../../components/SmallQuestion-Component/Component.SmallQuestion";
+import QuestionComponent from "../../components/QuestionBox-Component/Component.QuestionBox.jsx";
 
 const QuestionsRoute = () => {
   const [formData, setFormData] = useState({
@@ -62,49 +62,11 @@ const QuestionsRoute = () => {
       <div className={style.content}>
         <NavBarComponent />
         <h1 className={style.heading}> Questions </h1>
-
-        {/* Add a form for questions */}
-        <form onSubmit={handleSubmit}>
-          <div className={style.formField}>
-            <label htmlFor="subject">Subject:</label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              value={subject}
-              onChange={handleChange}
-            />
-          </div>
-          <div className={style.formField}>
-            <label htmlFor="description">Description:</label>
-            <textarea
-              id="description"
-              name="description"
-              value={description}
-              onChange={handleChange}
-            ></textarea>
-          </div>
-          <div className={style.formField}>
-            <label htmlFor="author">Author:</label>
-            <input
-              type="text"
-              id="author"
-              name="author"
-              value={author}
-              onChange={handleChange}
-            />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-
-        {/* Display the list of questions */}
-        <div className={style.questionList}>
-          {questions.map((question) => (
-            <SmallQuestionComponent key={question._id} question={question} />
-          ))}
+       
+            <QuestionComponent/>
+ 
         </div>
       </div>
-    </div>
   );
 };
 

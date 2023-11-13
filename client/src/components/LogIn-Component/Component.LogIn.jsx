@@ -26,7 +26,7 @@ const LogInComponent = (props) => {
         console.log(res);
         sessionStorage.setItem("JWT", res.data.token);
         console.log(sessionStorage.getItem("JWT"));
-        window.location.href = "/";
+        window.location.href = "/home";
       })
       .catch((err) => {
         console.log(err);
