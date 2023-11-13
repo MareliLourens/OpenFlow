@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import style from "./Style.Profile.module.scss";
 import TagComponent from "../TagComponent/Component.Tag";
-import Star from "../../assets/icons/star.svg";
-import StarFill from "../../assets/icons/star-fill.svg";
 import ProfileTest from "../../assets/images/profileTest.png";
 
 const ProfileComponent = () => {
   const [userData, setUserData] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = sessionStorage.getItem("JWT");
@@ -18,11 +18,33 @@ const ProfileComponent = () => {
           if (response.data.verified) {
             setUserData(response.data.user);
           } else {
+            // Handle unverified user if needed
           }
         })
-        .catch((error) => {});
+        .catch((error) => {
+          // Handle error if needed
+        });
     }
   }, []);
+
+  const handleDeleteAccount = async () => {
+    const token = sessionStorage.getItem("JWT");
+
+    try {
+      const response = await axios.delete(`http://localhost:5000/api/deleteUser/${userData._id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log("User deleted:", response.data);
+      console.log("User ID to delete:", userData._id);
+      sessionStorage.removeItem("JWT");
+      navigate("/");
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
 
   return (
     <div className={style.main}>
@@ -40,29 +62,15 @@ const ProfileComponent = () => {
             <h1 className={style.title}>{userData.name}</h1>
             <p className={style.text}>{userData.surname}</p>
           </div>
+          <div className={style.deleteacc} onClick={handleDeleteAccount}>
+            <h1 className={style.deleteacc}>Delete Account</h1>
+          </div>
           <p>
             Location: <span>Pretoria</span>
           </p>
           <br />
           <p>
-            Bio:{" "}
-            {userData.name === "Tristan" ? (
-              <span>
-                I am a dedicated and passionate developer student, fully
-                invested in the world of coding and software development.
-                Currently honing my skills at Open Window, I am deeply
-                interested in various programming languages and techniques. With
-                a strong grasp of HTML, CSS, JS, React.
-              </span>
-            ) : (
-              <span>
-                Hey there! My name is {userData.name}, I am a second year at
-                OpenWindow studying Interaction Design. I am a very passionate
-                functionality developer.
-              </span>
-            )}
-            <br />
-            {userData.bio}
+            Bio: {userData.bio}
           </p>
           <div className={style.lineBreak}></div>
           <br />
@@ -78,9 +86,9 @@ const ProfileComponent = () => {
             width="1100"
             height="270px"
             className={style.iframeBox}
-            allowfullscreen=""
+            allowFullScreen=""
             loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
+            referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
       </div>
