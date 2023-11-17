@@ -1,7 +1,14 @@
+// const express = require('express');
+// const jwt = require('jsonwebtoken');
+// const userSchema = require('../models/users');
+// const router = express();
+// require('dotenv/config');
+// const secretKey = process.env.SECRET_KEY;
+
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const userSchema = require('../models/users');
-const router = express();
+const router = express.Router(); // Use express.Router() to create a new router instance
 require('dotenv/config');
 const secretKey = process.env.SECRET_KEY;
 

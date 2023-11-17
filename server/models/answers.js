@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const answerSchema = mongoose.Schema({
+    text: {
+        type: String,
+        required: true,
+      },
+      
     author: {
         type: String,
         required: true,

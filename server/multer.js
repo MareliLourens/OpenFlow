@@ -3,7 +3,7 @@ const multer = require('multer');
 const fs = require('fs');
 
 const app = express();
-const port = 5001;
+const port = 5000;
 
 // Create the uploads directory if it doesn't exist
 const uploadDir = './uploads/';

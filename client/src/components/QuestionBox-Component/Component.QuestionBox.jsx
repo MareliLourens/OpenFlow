@@ -49,7 +49,7 @@ const QuestionBoxComponent = (props) => {
       console.log("Please fill out all fields.");
       return;
     } else {
-      axios.post(`http://localhost:5001/api/addQuestion`, formData)
+      axios.post(`http://localhost:5000/api/addQuestion`, formData)
         .then((res) => {
           console.log(res);
           console.log(res.data);
