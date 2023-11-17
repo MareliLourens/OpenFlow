@@ -16,7 +16,7 @@ const QUESTIONComponent = (props) => {
         if (!token) return;
 
         const response = await axios.post(
-          "http://localhost:5001/api/getLikesAndDislikes",
+          "http://localhost:5000/api/getLikesAndDislikes",
           {
             answerId: props.questionsData._id,
           },
