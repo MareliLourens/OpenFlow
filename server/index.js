@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const userRoute = require('./routes/users');
 const questionRoute = require('./routes/questions');
 const answerRoute = require('./routes/answers');
-const likesAndDislikesRouter = require('./routes/likesAndDislikesRouter'); // Add this line
+const likesAndDislikesRouter = require('./routes/likesAndDislikesRouter');
 
 
 require('dotenv/config');
@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(userRoute);
 app.use(questionRoute);
 app.use(answerRoute);
-app.use('/', likesAndDislikesRouter); // Mount the likes and dislikes router
+app.use('/', likesAndDislikesRouter); 
 
 
 mongoose
