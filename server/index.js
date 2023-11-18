@@ -1,35 +1,45 @@
-const express = require('express')
-const cors = require('cors')
-const jwt = require('jsonwebtoken')
-const mongoose = require('mongoose')
-const userRoute = require('./routes/users')
-const questionRoute = require('./routes/questions')
-const answerRoute = require('./routes/answers')
+const express = require('express');
+const cors = require('cors');
+const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
+const userRoute = require('./routes/users');
+const questionRoute = require('./routes/questions');
+const answerRoute = require('./routes/answers');
+const likesAndDislikesRouter = require('./routes/likesAndDislikesRouter');
 
-require('dotenv/config')
 
-const app = express()
+require('dotenv/config');
 
-app.use(cors({
-    origin: 'http://localhost:3000'
-}));
+const app = express();
 
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+  })
+);
 
-app.use(userRoute)
-app.use(questionRoute)
-app.use(answerRoute)
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-mongoose.connect(process.env.DB_CONNECTION, {
+app.use(userRoute);
+app.use(questionRoute);
+app.use(answerRoute);
+app.use('/', likesAndDislikesRouter); 
+
+
+mongoose
+  .connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    dbName: 'openFlow', 
-}).then(() => console.log("Connected to openFlow DB"))
-    .catch((err) => {
-        console.log("No Connection. Reason: " + err);
-    });
+    dbName: 'openFlow',
+  })
+  .then(() => console.log('Connected to openFlow DB'))
+  .catch((err) => {
+    console.log('No Connection. Reason: ' + err);
+  });
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => { console.log(`Server Started on port:${PORT}`)});
+app.listen(PORT, () => {
+  console.log(`Server Started on port:${PORT}`);
+});
